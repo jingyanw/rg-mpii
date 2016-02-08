@@ -101,7 +101,7 @@ for i=1:numel(image_paths)
             (opts.imageSize(2)+opts.border(2))/w];
 
   if opts.keepAspect
-    factor = max(factor) ;
+    factor = [max(factor), max(factor)] ;
   end
   if any(abs(factor - 1) > 0.0001)
     imt = imresize(imt, ...
@@ -147,8 +147,8 @@ for i=1:numel(image_paths)
     if ~isfield(label, 'x') || ~isfield(label, 'y')
         si = si + 1; continue; 
     end
-    lx = label.x - dx + 1;
-    ly = label.y - dy + 1;
+    lx = floor(label.x * factor(2)) - dx + 1;
+    ly = floor(label.y * factor(1)) - dy + 1;
     lhx = label.head([1,3]) - dx + 1;
     lhy = label.head([2,4]) - dy + 1;
 

@@ -40,7 +40,7 @@ global base_size
 create_if_not_exist(fullfile('images', dataset_name));
 create_if_not_exist(fullfile('labels', dataset_name));
 
-OBJECT_SIZE = [224,224];
+OBJECT_SIZE = [256, 224];
 IMAGE_SIZE = [256,256];
 BORDER_SIZE = (IMAGE_SIZE-OBJECT_SIZE)/2;
 
